@@ -1,0 +1,29 @@
+# mapping... something to something
+"\e1": "Â©"
+"\e2": "@"
+"\e3": "Â£"
+"\e4": "$"
+"\e5": "â"
+"\e6": "Â§"
+"\e7": "|"
+"\e8": "["
+"\e9": "]"
+"\e0": "â"
+"\e/": "\\"
+"\e(": "{"
+"\e)": "}"
+
+# Shows all files instead of beep when tab-completing
+set show-all-if-ambiguous on
+# # Ignore case when completing, very nice!
+set completion-ignore-case on
+  
+"\e[1~": beginning-of-line # Home key
+"\e[4~": end-of-line # End key
+"\e[3~": delete-char # Delete key
+"\e[5C": forward-word # Ctrl+right 
+"\e[5D": backward-word # Ctrl+left 
+"\e\e[C": forward-word # Alt+right 
+"\e\e[D": backward-word # Alt+left
+"\C-K": unix-line-discard # Ctrl+K 
+"\e\"": "@{}\e[D" # Insert @{} move cursor into braces
