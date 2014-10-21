@@ -20,7 +20,7 @@ if [ -f "/usr/local/bin/src-hilite-lesspipe.sh" ]; then
 fi
 
 # path
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:$PATH
 
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -Djava.awt.headless=true"
 if [ -x /usr/libexec/java_home ]; then
