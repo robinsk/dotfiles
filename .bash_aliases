@@ -1,5 +1,9 @@
 # ls
-alias ls='ls -G'
+if [ "$(uname -s)" = "Darwin" ]; then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
+fi
 alias l='ls -Alh'
 alias ll='ls -lh'
 
