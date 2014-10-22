@@ -13,6 +13,13 @@ export LC_MEASUREMENT="en_US.UTF-8"
 export LC_IDENTIFICATION="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+# read system-wide bashrc if it exists
+bash_prefix=$(dirname $(dirname $(which bash)))
+if [ -f "$bash_prefix/etc/bashrc" ]; then
+    . "$bash_prefix/etc/bashrc"
+fi
+unset bash_prefix
+
 # colored less
 if [ -f "/usr/local/bin/src-hilite-lesspipe.sh" ]; then
     export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
