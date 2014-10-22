@@ -47,10 +47,10 @@ if [ -f /usr/local/etc/bash_completion ]; then
     # this will also load ~/.bash_completion if it exists
     . /usr/local/etc/bash_completion
 fi
-if [ -f ~/.bashrc.local ]; then
-    . ~/.bashrc.local
-fi
 
 # colored prompt
 export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[1;30m\]$(__git_ps1)\[\e[0m\]\$ '
 
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
+fi
