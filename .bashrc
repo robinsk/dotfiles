@@ -20,6 +20,16 @@ if [ -f "$bash_prefix/etc/bashrc" ]; then
 fi
 unset bash_prefix
 
+# don't put duplicate lines or lines starting with space
+export HISTCONTROL=ignoreboth
+
+# append to history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=200000
+export HISTFILESIZE=300000
+
 # colored less
 if [ -f "/usr/local/bin/src-hilite-lesspipe.sh" ]; then
     export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
