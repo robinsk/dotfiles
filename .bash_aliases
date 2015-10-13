@@ -7,10 +7,9 @@ fi
 alias l='ls -Alh'
 alias ll='ls -lh'
 
-# grep
-alias grep='grep --colour=auto'
-alias fgrep='fgrep --colour=auto'
-alias egrep='egrep --colour=auto'
+# gnu
+alias grep='ggrep --color=auto'
+alias find='gfind'
 
 # misc
 alias psi='echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"; ps aux|grep -i'
