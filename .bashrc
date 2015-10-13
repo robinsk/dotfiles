@@ -31,7 +31,7 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -Djava.awt.headless=true"
 if [ -x /usr/libexec/java_home ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
     alias java6="export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)"
     alias java7="export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)"
     alias java8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)"
