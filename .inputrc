@@ -27,3 +27,9 @@ set completion-ignore-case on
 "\e\e[D": backward-word # Alt+left
 "\C-K": unix-line-discard # Ctrl+K 
 "\e\"": "@{}\e[D" # Insert @{} move cursor into braces
+
+# http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
