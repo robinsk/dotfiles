@@ -20,8 +20,17 @@ if [ -f "$bash_prefix/etc/bashrc" ]; then
 fi
 unset bash_prefix
 
+#
+# general stuff
+#
+# update window size after every command
+shopt -s checkwinsize
+
+#
+# better bash history
+#
 # don't put duplicate lines or lines starting with space
-export HISTCONTROL=ignoreboth
+export HISTCONTROL="erasedups:ignoreboth"
 
 # append to history file, don't overwrite it
 shopt -s histappend
@@ -30,15 +39,41 @@ shopt -s histappend
 export HISTSIZE=200000
 export HISTFILESIZE=300000
 
+# enable incremental history search with up/down arrows (also Readline goodness)
+# http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
+
+#
+# smarter tab completion (readline bindings)
+#
+# perform file completion in a case insensitive fashion
+bind "set completion-ignore-case on"
+
+# treat hyphens and underscores as equivalent
+bind "set completion-map-case on"
+
+# display matches for ambiguous patterns at first tab press
+bind "set show-all-if-ambiguous on"
+
+#
 # colored less
+#
 if [ -f "/usr/local/bin/src-hilite-lesspipe.sh" ]; then
     export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
     export LESS=' -R '
 fi
 
+#
 # path
+#
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
+#
+# java
+#
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -Djava.awt.headless=true"
 if [ -x /usr/libexec/java_home ]; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
@@ -47,13 +82,18 @@ if [ -x /usr/libexec/java_home ]; then
     alias java8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)"
 fi
 
-# mac-specific
+#
+# mac-specific stuff
+#
 if [ "$(uname -s)" = "Darwin" ]; then
     # cli colors
     export CLICOLORS=yes
     export LSCOLORS='ExGxFxdaCxDADAhbadecad'
 fi
 
+#
+# other includes
+#
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -65,8 +105,14 @@ if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
 
+#
 # colored prompt
+#
 export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[1;30m\]$(__git_ps1)\[\e[0m\]\$ '
+
+#
+# local overrides (.bashrc.local isn't in the dotfiles repo)
+#
 
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
