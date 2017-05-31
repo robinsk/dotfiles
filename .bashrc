@@ -103,6 +103,9 @@ if [ -f /usr/local/etc/bash_completion ]; then
     # this will also load ~/.bash_completion if it exists
     . /usr/local/etc/bash_completion
 fi
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+    . /usr/local/share/bash-completion/bash_completion
+fi
 
 #
 # colored prompt
