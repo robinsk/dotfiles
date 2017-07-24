@@ -13,10 +13,21 @@
 "\e(": "{"
 "\e)": "}"
 
-# Shows all files instead of beep when tab-completing
+# Press TAB once (instead of twice) to auto-complete
 set show-all-if-ambiguous on
-# # Ignore case when completing, very nice!
+# No bell.  No ^G in output
+set bell-style none
+# Don't query user about viewing the number of possible completions
+set completion-query-items -1
+# Display completions sorted horizontally, not vertically
+set print-completions-horizontally on
+# Ignore case when completing, very nice!
 set completion-ignore-case on
+# Complete with trailing slash for symlinks
+set mark-symlinked-directories on
+# This will suffix each returned file completion with a character
+# denoting its type, in a similar way to ls(1) with -F or --classify
+#set visible-stats on
   
 "\e[1~": beginning-of-line # Home key
 "\e[4~": end-of-line # End key
