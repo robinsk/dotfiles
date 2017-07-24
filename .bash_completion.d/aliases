@@ -36,6 +36,8 @@ function alias_completion {
                 local compl_wrapper="_${namespace}::${alias_name}"
                     echo "function $compl_wrapper {
                         (( COMP_CWORD += ${#alias_arg_words[@]} ))
+                        (( COMP_POINT += ${#alias_cmd} + 1 + ${#alias_args} ))
+                        COMP_LINE=\"$alias_cmd $alias_args \${COMP_WORDS[@]:1}\"
                         COMP_WORDS=($alias_cmd $alias_args \${COMP_WORDS[@]:1})
                         $compl_func
                     }" >> "$tmp_file"
