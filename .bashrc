@@ -91,6 +91,11 @@ if [ "$(uname -s)" = "Darwin" ]; then
 fi
 
 #
+# gpg
+#
+export GPG_TTY=$(tty)
+
+#
 # other includes
 #
 if [ -f ~/.bash_aliases ]; then
