@@ -85,15 +85,6 @@ if [ -x /usr/libexec/java_home ]; then
 fi
 
 #
-# mac-specific stuff
-#
-if [ "$(uname -s)" = "Darwin" ]; then
-    # cli colors
-    export CLICOLORS=yes
-    export LSCOLORS='ExGxFxdaCxDADAhbadecad'
-fi
-
-#
 # gpg
 #
 export GPG_TTY=$(tty)
