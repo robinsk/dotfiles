@@ -76,9 +76,12 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
 #
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true"
 if [ -x /usr/libexec/java_home ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-    alias java8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)"
-    alias java10="export JAVA_HOME=$(/usr/libexec/java_home -v 10.0)"
+    java8() {
+        export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+    }
+    java10() {
+        export JAVA_HOME=$(/usr/libexec/java_home -v 10.0)
+    }
 fi
 
 #
