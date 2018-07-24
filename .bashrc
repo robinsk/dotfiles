@@ -59,17 +59,20 @@ bind "set completion-map-case on"
 bind "set show-all-if-ambiguous on"
 
 #
-# colored less
-#
-if [ -f "/usr/local/bin/src-hilite-lesspipe.sh" ]; then
-    export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
-    export LESS=' -R '
-fi
-
-#
 # path
 #
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
+
+#
+# less config
+#
+# -F: exit if output fits on screen
+# -X: don't send termcap init/deinit string (necessary with -F)
+# -R: show ansi colors (don't escape them)
+export LESS="-FXR"
+if command -v src-hilite-lesspipe.sh > /dev/null; then
+    export LESSOPEN="| src-hilite-lesspipe.sh %s"
+fi
 
 #
 # java
