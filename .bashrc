@@ -115,6 +115,19 @@ fi
 export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[1;30m\]$(__git_ps1)\[\e[0m\]\$ '
 
 #
+# iterm
+#
+if [ -n "$ITERM_SESSION_ID" ]; then
+    # set current folder as iterm title
+    # \e]: escape sequence incoming!
+    # 0; set both and title (1=only tab, 2=only title)
+    # ${PWD##*/} the last dir of #PWD
+    # \a BEL escape sequence done, signal to iterm
+    SET_ITERM_TITLE='echo -ne "\e]0;${PWD##*/}\a"'
+    export PROMPT_COMMAND="$SET_ITERM_TITLE;$PROMPT_COMMAND"
+fi
+
+#
 # local overrides (.bashrc.local isn't in the dotfiles repo)
 #
 
