@@ -60,6 +60,7 @@ alias rebase='git pull --rebase'
 alias ci='git commit'
 alias co='git checkout'
 alias gd='git diff'
+alias jerk='git'
 
 # maven
 alias mci='mvn clean install'
