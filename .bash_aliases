@@ -51,6 +51,7 @@ alias find='gfind'
 alias psi='echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"; ps aux|grep -i'
 alias ccat='source-highlight -f esc256 -o STDOUT -i'
 alias diga='dig +nocmd +multiline +noall +answer'
+alias kc='kubectl'
 
 # git
 alias gst='git status'
