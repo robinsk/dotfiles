@@ -70,3 +70,4 @@ alias mcis='mvn clean install -DskipTests'
 alias be='bundle exec'
 alias brake='bundle exec rake'
 
+alias ml-venv='source ~/venvs/tensorflow-venv/bin/activate && echo Run deactivate when done'
