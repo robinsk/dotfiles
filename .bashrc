@@ -88,6 +88,9 @@ if [ -x /usr/libexec/java_home ]; then
     java11() {
         export JAVA_HOME=$(/usr/libexec/java_home -v 11.0)
     }
+    java13() {
+        export JAVA_HOME=$(/usr/libexec/java_home -v 13)
+    }
 fi
 
 #
