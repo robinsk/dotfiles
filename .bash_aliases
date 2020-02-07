@@ -70,4 +70,7 @@ alias mcis='mvn clean install -DskipTests'
 alias be='bundle exec'
 alias brake='bundle exec rake'
 
+# terraform
+alias tf='terraform'
+
 alias ml-venv='source ~/venvs/tensorflow-venv/bin/activate && echo Run deactivate when done'
