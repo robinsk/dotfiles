@@ -98,22 +98,6 @@ fi
 #
 export GPG_TTY=$(tty)
 
-#
-# other includes
-#
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-if [ -f /usr/local/etc/bash_completion ]; then
-    # this will also load ~/.bash_completion if it exists
-    . /usr/local/etc/bash_completion
-fi
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-    . /usr/local/share/bash-completion/bash_completion
-fi
 
 #
 # colored prompt
@@ -136,7 +120,6 @@ fi
 #
 # local overrides (.bashrc.local isn't in the dotfiles repo)
 #
-
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
