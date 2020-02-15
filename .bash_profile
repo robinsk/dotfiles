@@ -110,13 +110,6 @@ if [ -n "$ITERM_SESSION_ID" ]; then
     export PROMPT_COMMAND="$SET_ITERM_TITLE;$PROMPT_COMMAND"
 fi
 
-#
-# local overrides (.bashrc.local isn't in the dotfiles repo)
-#
-if [ -f ~/.bashrc.local ]; then
-    . ~/.bashrc.local
-fi
-
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -128,4 +121,11 @@ fi
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
     . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
+
+#
+# local overrides (.bashrc.local isn't in the dotfiles repo)
+#
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
 fi
