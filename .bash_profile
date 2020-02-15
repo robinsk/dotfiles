@@ -1,5 +1,3 @@
-start_timestamp=$(/usr/local/bin/gdate +%s%3N)
-
 source $HOME/.bashrc
 
 if [ -f ~/.bash_aliases ]; then
@@ -13,7 +11,3 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
     . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
-
-end_timestamp=$(/usr/local/bin/gdate +%s%3N)
-let time_taken=$end_timestamp-$start_timestamp
-echo "Load time ${time_taken}ms"
