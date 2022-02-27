@@ -110,11 +110,6 @@ if [ -n "$ITERM_SESSION_ID" ]; then
     export PROMPT_COMMAND="$SET_ITERM_TITLE;$PROMPT_COMMAND"
 fi
 
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # read global bash-completion
 # this has to go in the end, because the way to load completions
 # has changed recently, and will not load unless interactive etc etc
@@ -129,3 +124,7 @@ fi
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
+
+end_timestamp=$(/usr/local/bin/gdate +%s%3N)
+let time_taken=$end_timestamp-$start_timestamp
+echo "Load time ${time_taken}ms"
