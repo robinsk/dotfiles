@@ -10,3 +10,7 @@ if command -v terraform > /dev/null; then
     complete -C terraform terraform
     complete -C terraform tf
 fi
+
+if command -v boundary > /dev/null; then
+	complete -C boundary boundary
+fi
