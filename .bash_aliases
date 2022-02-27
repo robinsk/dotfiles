@@ -73,4 +73,7 @@ alias brake='bundle exec rake'
 # terraform
 alias tf='terraform'
 
-alias ml-venv='source ~/venvs/tensorflow-venv/bin/activate && echo Run deactivate when done'
+function delete-ssh-config-line () {
+    local line="$1"
+    sed -i '' "${line}d" ~/.ssh/known_hosts
+}
