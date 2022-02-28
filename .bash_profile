@@ -1,3 +1,5 @@
+start_timestamp=$(/usr/local/bin/gdate +%s%3N)
+
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
