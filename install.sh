@@ -22,7 +22,7 @@ abs_dirname() {
 
 DOTFILES_DIR="$(abs_dirname "$0")"
 
-ln -s "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_alises"
+ln -s "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 ln -s "$DOTFILES_DIR/.bash_completion" "$HOME/.bash_completion"
 ln -s "$DOTFILES_DIR/.bash_completion.d" "$HOME/.bash_completion.d"
 ln -s "$DOTFILES_DIR/.bash_profile" "$HOME/.bash_profile"
