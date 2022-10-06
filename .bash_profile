@@ -1,4 +1,14 @@
-start_timestamp=$(/usr/local/bin/gdate +%s%3N)
+if [[ -f /usr/local/bin/brew ]]; then
+    BREW_DIR="/usr/local"
+    export BREW_DIR
+elif [[ -f /opt/homebrew/bin/brew ]]; then
+    BREW_DIR="/opt/homebrew"
+    export BREW_DIR
+fi
+
+if [[ -f "$BREW_DIR/bin/gdate" ]]; then
+    start_timestamp=$($BREW_DIR/bin/gdate +%s%3N)
+fi
 
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
@@ -56,7 +66,13 @@ bind "set show-all-if-ambiguous on"
 #
 # path
 #
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
+if [[ -d "$BREW_DIR/opt/python/libexec/bin" ]]; then
+    export PATH="$BREW_DIR/opt/python/libexec/bin:$PATH"
+fi
+if [[ -d "$BREW_DIR/bin" ]]; then
+    export PATH="$BREW_DIR/bin:$PATH"
+fi
+export PATH="$HOME/bin:$PATH"
 
 #
 # less config
@@ -119,9 +135,9 @@ fi
 # read global bash-completion
 # this has to go in the end, because the way to load completions
 # has changed recently, and will not load unless interactive etc etc
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
-    . "/usr/local/etc/profile.d/bash_completion.sh"
+export BASH_COMPLETION_COMPAT_DIR="$BREW_DIR/etc/bash_completion.d"
+if [[ -r "$BREW_DIR/etc/profile.d/bash_completion.sh" ]]; then
+    . "$BREW_DIR/etc/profile.d/bash_completion.sh"
 fi
 
 #
@@ -131,6 +147,8 @@ if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
-end_timestamp=$(/usr/local/bin/gdate +%s%3N)
-let time_taken=$end_timestamp-$start_timestamp
-echo "Load time ${time_taken}ms"
+if [[ -f "$BREW_DIR/bin/gdate" ]]; then
+    end_timestamp=$($BREW_DIR/bin/gdate +%s%3N)
+    let time_taken=$end_timestamp-$start_timestamp
+    echo "Load time ${time_taken}ms"
+fi
