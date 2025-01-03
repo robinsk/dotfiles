@@ -96,23 +96,7 @@ fi
 # java
 #
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true"
-if [ -x /usr/libexec/java_home ]; then
-    java8() {
-        export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-    }
-    java10() {
-        export JAVA_HOME=$(/usr/libexec/java_home -v 10.0)
-    }
-    java11() {
-        export JAVA_HOME=$(/usr/libexec/java_home -v 11.0)
-    }
-    java13() {
-        export JAVA_HOME=$(/usr/libexec/java_home -v 13)
-    }
-    java17() {
-        export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-    }
-fi
+
 
 #
 # gpg
