@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -d ~/.bash_completion.d ]; then
-    for f in $(find ~/.bash_completion.d/* -type f); do
+    for f in ~/.bash_completion.d/*; do
         source "$f"
     done
 fi
