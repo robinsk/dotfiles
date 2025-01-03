@@ -101,7 +101,8 @@ export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -Djava.awt.headless=true -Djava.
 #
 # gpg
 #
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 #
 # colored prompt
@@ -117,11 +118,13 @@ if [ -n "$ITERM_SESSION_ID" ]; then
     # 0; set both and title (1=only tab, 2=only title)
     # ${PWD##*/} the last dir of #PWD
     # \a BEL escape sequence done, signal to iterm
+    # shellcheck disable=SC2016
     SET_ITERM_TITLE='echo -ne "\e]0;${PWD##*/}\a"'
     export PROMPT_COMMAND="$SET_ITERM_TITLE;$PROMPT_COMMAND"
 fi
 
 if [ -f ~/.bash_aliases ]; then
+    # shellcheck disable=SC1090
     . ~/.bash_aliases
 fi
 
@@ -130,6 +133,7 @@ fi
 # has changed recently, and will not load unless interactive etc etc
 export BASH_COMPLETION_COMPAT_DIR="$BREW_DIR/etc/bash_completion.d"
 if [[ -r "$BREW_DIR/etc/profile.d/bash_completion.sh" ]]; then
+    # shellcheck disable=SC1091
     . "$BREW_DIR/etc/profile.d/bash_completion.sh"
 fi
 
@@ -137,5 +141,6 @@ fi
 # local overrides (.bashrc.local isn't in the dotfiles repo)
 #
 if [ -f ~/.bashrc.local ]; then
+    # shellcheck disable=SC1090
     . ~/.bashrc.local
 fi
