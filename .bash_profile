@@ -1,13 +1,18 @@
+#profile_snap="$(/opt/homebrew/bin/gdate +%s%3N)"
+#function profile_time() {
+#    local prev="$profile_snap"
+#    profile_snap="$(/opt/homebrew/bin/gdate +%s%3N)"
+#    local desc="$1"
+#    local time_taken=$(( $profile_snap - $prev ))
+#    echo "${time_taken}ms $desc"
+#}
+
 if [[ -f /usr/local/bin/brew ]]; then
     BREW_DIR="/usr/local"
     export BREW_DIR
 elif [[ -f /opt/homebrew/bin/brew ]]; then
     BREW_DIR="/opt/homebrew"
     export BREW_DIR
-fi
-
-if [[ -f "$BREW_DIR/bin/gdate" ]]; then
-    start_timestamp=$($BREW_DIR/bin/gdate +%s%3N)
 fi
 
 export LANG=en_US.UTF-8
@@ -147,10 +152,4 @@ fi
 #
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
-fi
-
-if [[ -f "$BREW_DIR/bin/gdate" ]]; then
-    end_timestamp=$($BREW_DIR/bin/gdate +%s%3N)
-    let time_taken=$end_timestamp-$start_timestamp
-    echo "Load time ${time_taken}ms"
 fi
