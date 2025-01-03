@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #profile_snap="$(/opt/homebrew/bin/gdate +%s%3N)"
 #function profile_time() {
 #    local prev="$profile_snap"

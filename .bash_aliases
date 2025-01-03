@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # ls
 if [ "$(uname -s)" = "Darwin" ]; then
     alias ls='ls -G'
