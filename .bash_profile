@@ -54,6 +54,12 @@ shopt -s histappend
 export HISTSIZE=200000
 export HISTFILESIZE=300000
 
+# timestamp bash history (%F = YYYY-MM-DD, %T = HH:MM:SS)
+export HISTTIMEFORMAT="%F %T "
+
+# persist to history after each command
+export PROMPT_COMMAND='history -a'
+
 #
 # path
 #
