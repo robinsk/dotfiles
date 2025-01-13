@@ -56,3 +56,13 @@ if [[ ! -d "$HOME/Library/Application\ Support/com.mitchellh.ghostty" ]]; then
   mkdir -p "$HOME/Library/Application\ Support/com.mitchellh.ghostty"
 fi
 link_dotfile "$DOTFILES_DIR/ghostty.config" "$HOME/Library/Application\ Support/com.mitchellh.ghostty/config"
+
+ghostty_font="$(grep -E ^font-family "$DOTFILES_DIR/ghostty.config" | cut -d '=' -f 2 | xargs)"
+if [[ -x /usr/bin/atsutil ]]; then
+  if atsutil fonts -list | grep "$ghostty_font" >/dev/null; then
+    echo "✅ Ghostty font installed, all good: $ghostty_font"
+  else
+    echo "⚠️ Ghostty font not installed: $ghostty_font"
+    echo "   Download from: https://www.nerdfonts.com/font-downloads"
+  fi
+fi
