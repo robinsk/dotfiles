@@ -32,3 +32,8 @@ ln -s "$DOTFILES_DIR/.toprc" "$HOME/.toprc"
 ln -s "$DOTFILES_DIR/.vim" "$HOME/.vim"
 ln -s "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ln -s "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+
+if [[ ! -d "$HOME/Library/Application\ Support/com.mitchellh.ghostty" ]]; then
+  mkdir -p "$HOME/Library/Application\ Support/com.mitchellh.ghostty"
+fi
+ln -s "$DOTFILES_DIR/ghostty.config" "$HOME/Library/Application\ Support/com.mitchellh.ghostty/config"
