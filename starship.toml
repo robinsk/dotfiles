@@ -1,0 +1,23 @@
+# used as PS2 (multiline prompt, echo hello \<ret>)
+#continuation_prompt = '▶▶ '
+
+[directory]
+# show more dirs than the last two
+truncation_length = 8
+# don't truncate git repos
+truncate_to_repo = false
+
+[git_branch]
+# use a wider symbol for git branch
+symbol = '󰘬 '
+
+[time]
+# not sure if I want the time or not
+disabled = true
+
+[terraform]
+# use different symbol, and show the
+# text 'tf' instead of 'default' workspace,
+# since I don't use terraform workspaces
+format = 'via [󱁢 tf]($style) '
+#symbol = '󱁢 '

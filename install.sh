@@ -33,6 +33,11 @@ ln -s "$DOTFILES_DIR/.vim" "$HOME/.vim"
 ln -s "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ln -s "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
+if [[ ! -d "$HOME/.config" ]]; then
+    mkdir "$HOME/.config"
+fi
+ln -s "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
+
 if [[ ! -d "$HOME/Library/Application\ Support/com.mitchellh.ghostty" ]]; then
   mkdir -p "$HOME/Library/Application\ Support/com.mitchellh.ghostty"
 fi

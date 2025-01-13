@@ -133,3 +133,7 @@ if [ -f ~/.bashrc.local ]; then
     # shellcheck disable=SC1090
     . ~/.bashrc.local
 fi
+
+if [[ -f ~/dotfiles/starship-init.sh ]]; then
+    . ~/dotfiles/starship-init.sh
+fi
