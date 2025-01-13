@@ -38,6 +38,9 @@ export LC_ALL="en_US.UTF-8"
 # update window size after every command
 shopt -s checkwinsize
 
+# colorize CLI commands
+export CLICOLOR=1
+
 #
 # better bash history
 #
