@@ -51,25 +51,6 @@ shopt -s histappend
 export HISTSIZE=200000
 export HISTFILESIZE=300000
 
-# enable incremental history search with up/down arrows (also Readline goodness)
-# http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-bind '"\e[C": forward-char'
-bind '"\e[D": backward-char'
-
-#
-# smarter tab completion (readline bindings)
-#
-# perform file completion in a case insensitive fashion
-bind "set completion-ignore-case on"
-
-# treat hyphens and underscores as equivalent
-bind "set completion-map-case on"
-
-# display matches for ambiguous patterns at first tab press
-bind "set show-all-if-ambiguous on"
-
 #
 # path
 #
@@ -96,7 +77,6 @@ fi
 # java
 #
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true"
-
 
 #
 # gpg

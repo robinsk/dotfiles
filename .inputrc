@@ -1,3 +1,5 @@
+# readline config
+
 # mapping... something to something
 "\e1": "Â©"
 "\e2": "@"
@@ -13,19 +15,30 @@
 "\e(": "{"
 "\e)": "}"
 
-# Press TAB once (instead of twice) to auto-complete
+
+# press TAB once (instead of twice) to auto-complete
+# display matches for ambiguous patterns at first tab press
 set show-all-if-ambiguous on
-# No bell.  No ^G in output
+
+# no bell, no ^G in output
 set bell-style none
-# Don't query user about viewing the number of possible completions
+
+# don't query user about viewing the number of possible completions
 set completion-query-items -1
-# Display completions sorted horizontally, not vertically
+
+# display completions sorted horizontally, not vertically
 set print-completions-horizontally on
-# Ignore case when completing, very nice!
+
+# ignore case when completing, very nice!
 set completion-ignore-case on
-# Complete with trailing slash for symlinks
+
+# treat hyphens and underscores as equivalent
+set completion-map-case on
+
+# complete with trailing slash for symlinks
 set mark-symlinked-directories on
-# This will suffix each returned file completion with a character
+
+# this will suffix each returned file completion with a character
 # denoting its type, in a similar way to ls(1) with -F or --classify
 #set visible-stats on
   
@@ -39,6 +52,7 @@ set mark-symlinked-directories on
 "\C-K": unix-line-discard # Ctrl+K 
 "\e\"": "@{}\e[D" # Insert @{} move cursor into braces
 
+# enable incremental history search with up/down arrows (also Readline goodness)
 # http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
 "\e[A": history-search-backward
 "\e[B": history-search-forward
