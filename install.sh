@@ -25,9 +25,9 @@ link_dotfile() {
   local target="$2"
 
   if [[ -L "$target" ]]; then
-    echo "Already linked: $target"
+    echo "✅ Already linked: $target"
   else
-    echo "Linking $source -> $target"
+    echo "➡️ Linking $source -> $target"
     ln -sv "$source" "$target"
   fi
 }
@@ -46,13 +46,13 @@ link_dotfile "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 link_dotfile "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
 if [[ ! -d "$HOME/.config" ]]; then
-  echo "Create $HOME/.config directory"
+  echo "➡️ Create $HOME/.config directory"
   mkdir "$HOME/.config"
 fi
 link_dotfile "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
 
 if [[ ! -d "$HOME/Library/Application\ Support/com.mitchellh.ghostty" ]]; then
-  echo "Create $HOME/Library/Application\ Support/com.mitchellh.ghostty"
+  echo "➡️ Create $HOME/Library/Application\ Support/com.mitchellh.ghostty"
   mkdir -p "$HOME/Library/Application\ Support/com.mitchellh.ghostty"
 fi
 link_dotfile "$DOTFILES_DIR/ghostty.config" "$HOME/Library/Application\ Support/com.mitchellh.ghostty/config"
