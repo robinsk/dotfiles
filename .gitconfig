@@ -23,6 +23,7 @@
     pul = pull
 [push]
     default = current
+    autoSetupRemote = true
 [remote "origin"]
     push = HEAD
 [diff "sopsdiffer"]
