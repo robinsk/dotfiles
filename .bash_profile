@@ -134,6 +134,8 @@ if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
+eval "$(mise activate bash)"
+
 if [[ -f ~/dotfiles/starship-init.sh ]]; then
     . ~/dotfiles/starship-init.sh
 fi
