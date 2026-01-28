@@ -1,0 +1,121 @@
+# source it into bash
+
+comment_show_last_detailed=1
+comment_show_last_position=0
+
+
+function offer_alm_revisions() {
+    local raw_history
+    raw_history="$(alembic history | sed -E 's/^[^->]+ -> ([^ ]+.+)$/\1/')"
+    #echo -e "\n${raw_history}"
+
+    if [ ${comment_show_last_detailed} = 0 ] &&
+           [ ${comment_show_last_position} = $COMP_POINT ]; then
+        echo -e "\n${raw_history}"
+        comment_show_last_detailed=1
+        ALM_PARAMETERS=()
+    else
+        ALM_PARAMETERS=( ${backup_parameters[@]} )
+        ALM_PARAMETERS+=( $(echo "${raw_history}" | sed -E 's/^([^ ,<>]+).+$|^<base> -> ([^ ]+) .+$/\1\2/' ) )
+        # echo -e "\n${ALM_PARAMETERS[@]}" >&2
+        comment_show_last_detailed=0
+    fi
+    comment_show_last_position=$COMP_POINT
+
+}
+
+
+_simple_alembic_completions() {
+    local WORDS="branches current downgrade edit heads history init list_templates merge revision show stamp upgrade"
+
+    # echo -e "\e[1m[${#COMP_WORDS[@]}]\e[0m" >&2
+    # echo -e "\e[1m[${COMP_WORDS[@]}]\e[0m" >&2
+
+    if [[ "${#COMP_WORDS[@]}" < 3 ]]; then
+        COMPREPLY=($(compgen -W "${WORDS[@]}" "${COMP_WORDS[1]}"))
+    else
+        #echo -e "\e[2m[${COMP_WORDS[1]}\e[0m" >&2
+        local ALM_PARAMETERS=( '--help' )
+        case "${COMP_WORDS[1]}" in
+            'history' )
+                ALM_PARAMETERS+=( '--rev-range' '--indicate-current' '--verbose') ;;
+            'downgrade' ) ;&
+            'upgrade' )
+                ALM_PARAMETERS+=( '--sql' '--tag' ) ;;
+            'heads' )
+                ALM_PARAMETERS+=( '--resolve-dependencies' '--verbose' ) ;;
+            'init' )
+                ALM_PARAMETERS+=( '--package' '--template' ) ;;
+            'merge' )
+                ALM_PARAMETERS+=( '--message' '--branch-label' '--rev-id' ) ;;
+            'show' ) ;&
+            'edit' )
+            ;;
+            'branches' ) ;&
+            'current' )
+                ALM_PARAMETERS+=( '--verbose' ) ;;
+            'revision' )
+                ALM_PARAMETERS+=( '--message' '--autogenerate' '--sql' '--head' '--splice' '--branch-label' '--version-path VERSION' '--rev-id' '--depends-on') ;;
+            'stamp' )
+                ALM_PARAMETERS+=( '--sql' '--tag' '--purge' ) ;;
+        esac
+
+        # echo -e "\e[2m[lastComplete:${COMP_WORDS[-2]}]\e[0m" >&2
+
+        offer_more=true
+
+        # based on last completed parameter - support next arbitrary param
+        case "${COMP_WORDS[-2]}" in
+            # standalone parameters
+            '--help' ) ;&
+            '--verbose' ) ;&
+            '--resolve-dependencies' ) ;&
+            '--package' ) ;&
+            '--sql' ) ;&
+            '--autogenerate' ) ;&
+            '--splice' ) ;&
+            '--head' ) ;&
+            '--purge' )
+                # NOOP
+                ;;
+
+            # parameters with user provided values
+            --* )
+                ALM_PARAMETERS=()
+                offer_more=false
+                ;;
+        esac
+
+        backup_parameters=( ${ALM_PARAMETERS[@]} )
+
+        if ${offer_more} && [[ ( -z "${COMP_WORDS[-1]}" || ! "${COMP_WORDS[-1]}" =~ ^-- ) && ${#COMP_WORDS[@]} -gt 2 ]]; then
+            # echo 'empty last compword' >&2
+            case "${COMP_WORDS[1]}" in
+                'upgrade' ) ;&
+                'stamp' ) ;&
+                'show' ) ;&
+                'stamp' ) ;&
+                'merge' ) ;&
+                'edit' ) ;&
+                'downgrade' )
+                    offer_alm_revisions
+                    ;;
+                'revision' )
+                    if [[ "${COMP_WORDS[-2]}" == '--head' ]]; then
+                        offer_alm_revisions
+                    fi
+                    ;;
+            esac
+        fi
+        # echo "COMP_TYPE:${COMP_TYPE}" >&2
+
+        if [[ "${#ALM_PARAMETERS[@]}" != '0' ]]; then
+            COMPREPLY=($(compgen -W "$(echo "${ALM_PARAMETERS[@]}")" -- "${COMP_WORDS[-1]}"))
+            #echo -e "\e[35;2m[doing params]\e[0m" >&2
+        fi
+    fi
+    #echo -e "\e[33;2mCOMPREPLY: ${COMPREPLY[@]}\e[0m" >&2
+}
+
+complete -F _simple_alembic_completions alembic
+
