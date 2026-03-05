@@ -136,6 +136,6 @@ fi
 
 eval "$(mise activate bash)"
 
-if [[ -f ~/dotfiles/starship-init.sh ]]; then
+if [[ "$TERM" != "dumb" && -f ~/dotfiles/starship-init.sh ]]; then
     . ~/dotfiles/starship-init.sh
 fi
