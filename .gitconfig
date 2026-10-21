@@ -21,6 +21,7 @@
     poull = pull
     puoll = pull
     pul = pull
+    ocmmit = commit
 [push]
     default = current
     autoSetupRemote = true
