@@ -36,6 +36,6 @@
 [include]
     path = ~/.gitconfig.local
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [gpg]
-	format = ssh
+    format = ssh
