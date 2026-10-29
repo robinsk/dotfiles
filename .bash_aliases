@@ -61,6 +61,11 @@ alias gd='git diff'
 # terraform
 alias tf='terraform'
 
+# neovim
+if command -v nvim &> /dev/null; then
+    alias vim='nvim'
+fi
+
 function delete-ssh-config-line () {
     local line="$1"
     sed -i '' "${line}d" ~/.ssh/known_hosts
